@@ -11,7 +11,6 @@ defmodule Count do
     |> count_frequency(letter)
   end
 
-
   # PRIVATE FUNCTIONS
   defp count_frequency(list, element, count \\ 0)
 
