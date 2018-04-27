@@ -1,52 +1,40 @@
 @doc """
-Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
-For example: binary tree [3,9,20,nil,nil,15,7],
-     3
-    / \
-   9  20
-     /  \
-    15   7
- """
- #remove @doc comments to run
+  Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+  For example: binary tree [3,9,20,nil,nil,15,7],
+       3
+      / \
+     9  20
+       /  \
+      15   7
 
+  Should return: [[3],[9,20],[15,7]]
+ """
 defmodule BinaryTree do
   def traverse_nodes(list) do
     list
-    |> get_root_node
-    |> chunk_children_nodes
     |> traverse_by_level
+    |> remove_nil_nodes
   end
 
   # PRIVATE FUNCTIONS
-  defp get_root_node(list) do
-    [head | tail] = list
-    
-    [head, tail]
+  defp traverse_by_level(list, node_list \\ [],level \\ 1)
+
+  defp traverse_by_level([], node_list, _level), do: node_list
+
+  defp traverse_by_level(list, node_list, level) when level == 1 do
+    [root_node | tail] = list
+
+    traverse_by_level(tail, node_list ++ [[root_node]], level * 2)
   end
 
-  defp chunk_children_nodes(list) do
-    children_nodes = Enum.at(list, 1)
-    chunked_children = Enum.chunk_every(children_nodes, 2)
-
-    [hd(list), chunked_children]
-  end
-
-  defp traverse_by_level(list, level \\ 0)
-
-  defp traverse_by_level([], _level), do: nil
-
-  # guard clause for root node
-  defp traverse_by_level(list, level) when level < 1 do
-    root_node = List.first(list)
-    new_list = List.last(list)
-
-    [root_node, traverse_by_level(new_list, level + 1)]
-  end
-
-  defp traverse_by_level(list, level) when level >= 1 do
+  defp traverse_by_level(list, node_list, level) do
     child_nodes = Enum.take(list, level)
-    new_list = list -- child_nodes
 
-    [child_nodes, traverse_by_level(new_list, level * 2)]
+    traverse_by_level(list -- child_nodes, node_list ++ [child_nodes], level * 2)
+  end
+
+  defp remove_nil_nodes(node_list) do
+    Enum.map(node_list, fn(node) ->
+      Enum.filter(node, fn(element) -> !is_nil(element) end) end)
   end
 end

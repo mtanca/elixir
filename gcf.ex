@@ -1,16 +1,17 @@
 defmodule GreatestCommonFactor do
+  def gcf(num_one, num_two) do
+    x = factors(num_one)
+    y = factors(num_two)
 
-  def gfc(num_one, num_two) do
-    x = factors(num_one, 1, [])
-    y = factors(num_two, 1, [])
-
-    common_factors(x,y) |> Enum.max
+    common_factors(x,y) |> List.last
   end
 
   defp common_factors(x,y) do
-    Enum.map(x, fn(x_f) ->
-      Enum.filter(y, fn(y_f) -> y_f == x_f end) end) |> List.flatten
+    Enum.flat_map(x, fn(x_element) ->
+      Enum.filter(y, fn(y_element) -> y_element == x_element end) end)
   end
+
+  defp factors(number, dividor \\ 1, n_factors \\ [])
 
   defp factors(number, dividor, n_factors) when number < dividor, do: n_factors
 
