@@ -1,5 +1,4 @@
 defmodule LongestWord do
-
   def longest(sentence, longest \\ "")
 
   def longest("", longest), do: longest
@@ -11,7 +10,7 @@ defmodule LongestWord do
 
     cond do
       String.length(word) > String.length(longest) -> longest(new_sentence, word)
-      String.length(word) <= String.length(longest) ->  longest(new_sentence, longest)
+      String.length(word) <= String.length(longest) -> longest(new_sentence, longest)
     end
   end
 
