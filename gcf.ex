@@ -6,21 +6,22 @@ defmodule GreatestCommonFactor do
     common_factors(x,y) |> List.last
   end
 
+  # PRIVATE FUNCTIONS
   defp common_factors(x,y) do
     Enum.flat_map(x, fn(x_element) ->
       Enum.filter(y, fn(y_element) -> y_element == x_element end) end)
   end
 
-  defp factors(number, dividor \\ 1, n_factors \\ [])
+  defp factors(number, divisor \\ 1, factors \\ [])
 
-  defp factors(number, dividor, n_factors) when number < dividor, do: n_factors
+  defp factors(number, divisor, factors) when number < divisor, do: factors
 
-  defp factors(number, dividor, n_factors) do
-    x = mod(number, dividor)
+  defp factors(number, divisor, factors) do
+    remainder = mod(number, divisor)
 
     cond do
-      x == 0 -> factors(number, dividor + 1, n_factors ++ [dividor])
-      x != 0 -> factors(number, dividor + 1, n_factors)
+      remainder == 0 -> factors(number, divisor + 1, factors ++ [divisor])
+      remainder != 0 -> factors(number, divisor + 1, factors)
     end
   end
 

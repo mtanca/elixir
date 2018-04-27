@@ -1,11 +1,12 @@
 defmodule Palindrome do
-  def is_palindrome(word) do
+  def is_palindrome?(word) do
     mp = Integer.floor_div(String.length(word), 2)
     word
     |> tokenize
     |> check(mp, 0)
   end
 
+  # PRIVATE FUNCTIONS
   defp tokenize(word) do
     for <<l::binary-1 <- word>>, do: l
   end

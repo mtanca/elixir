@@ -23,14 +23,17 @@ defmodule BinaryTree do
 
   defp traverse_by_level(list, node_list, level) when level == 1 do
     [root_node | tail] = list
+    new_node_list = node_list ++ [[root_node]]
 
-    traverse_by_level(tail, node_list ++ [[root_node]], level * 2)
+    traverse_by_level(tail, new_node_list, level * 2)
   end
 
   defp traverse_by_level(list, node_list, level) do
     child_nodes = Enum.take(list, level)
+    new_list = list -- child_nodes
+    new_node_list = node_list ++ [child_nodes]
 
-    traverse_by_level(list -- child_nodes, node_list ++ [child_nodes], level * 2)
+    traverse_by_level(new_list, new_node_list, level * 2)
   end
 
   defp remove_nil_nodes(node_list) do

@@ -1,13 +1,22 @@
+@doc """
+  Write a method that takes a string in and returns true if the letter
+  "z" appears within three letters **after** an "a". You may assume
+  that the string contains only lowercase letters.
+"""
+
 defmodule NearBy do
-  def is_nearby(word) do
+  def is_nearby?(word) do
     word
     |> tokenize
-    |> check(0)
+    |> check
   end
 
+# PRIVATE FUNCTIONS
   defp tokenize(word) do
     for <<x::binary-1 <- word>>, do: x
   end
+
+  defp check(letters, counter \\ 0)
 
   defp check([], _counter), do: false
 

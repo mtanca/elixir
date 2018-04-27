@@ -1,5 +1,4 @@
 # Example from Thomas's Elixir 1.3 book...
-
 defmodule FibSolver do
   def fib(scheduler_pid) do
     # tell scheduler ready for new number

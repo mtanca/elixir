@@ -1,4 +1,3 @@
-
 defmodule Hamming do
   def compute(s_one, s_two) do
     [strand_one, strand_two] =
@@ -7,7 +6,8 @@ defmodule Hamming do
     distance(strand_one, strand_two)
   end
 
-  def tokenize_strand(strand) do
+  # PRIVATE FUNCTIONS
+  defp tokenize_strand(strand) do
     for<<letter::binary-1 <- strand>>, do: letter
   end
 
