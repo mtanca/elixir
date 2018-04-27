@@ -1,5 +1,4 @@
 defmodule Palindrome do
-
   def is_palindrome(word) do
     mp = Integer.floor_div(String.length(word), 2)
     word
@@ -24,5 +23,4 @@ defmodule Palindrome do
       _ -> false
     end
   end
-
 end
