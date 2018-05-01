@@ -2,9 +2,9 @@ defmodule ParallelExample do
   def pmap(list,function) do
     current_process = self()
     list
-    |> Enum.map( fn(element) ->
+    |> Enum.map(fn(element) ->
       spawn_link fn -> send process, { self(), function.(element) } end end)
-    |> Enum.map( fn(pid) ->
+    |> Enum.map(fn(pid) ->
       receive do{^pid, result} -> result end end)
   end
 end

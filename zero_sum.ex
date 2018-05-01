@@ -1,9 +1,8 @@
 defmodule ZeroSum do
-
   def two_sums(numbers) do
-    coordinates = sums_to_zero(numbers)
-    case coordinates do
-      c when c != nil -> Enum.map(coordinates, &(index(&1, numbers)))
+    case sums_to_zero(numbers) do
+      coordinates when coordinates != nil ->
+        Enum.map(coordinates, &(index(&1, numbers)))
       _ -> nil
     end
   end
@@ -28,5 +27,4 @@ defmodule ZeroSum do
   defp index(element, list) do
     Enum.find_index(list, fn(n) -> n == element end)
   end
-
 end

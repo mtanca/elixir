@@ -23,7 +23,9 @@ defmodule PhoneNumber do
   end
 
   # PRIVATE FUNCTIONS
-  defp separate(list), do: for<<element::binary-1 <- list>>, do: element
+  defp separate(list) do
+    for<<element::binary-1 <- list>>, do: element
+  end
 
   defp convert_digits_to_letters(digits) do
     letters = %{

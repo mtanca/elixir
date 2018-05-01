@@ -7,10 +7,10 @@ end
 defmodule Repo do
   def all(User) do
    [
-      %User{id: 1, name: "Mark XXXXX", username: "mark", password: "elixir"},
-      %User{id: 2, name: "Matt YYYY", username: "matt", password: "elixir"},
-      %User{id: 3, name: "Osama AAAA", username: "osama", password: "elixir"},
-      %User{id: 4, name: "Eugene BBBB", username: "eugene", password: "elixir"}
+     %User{id: 1, name: "Mark XXXXX", username: "mark", password: "elixir"},
+     %User{id: 2, name: "Matt YYYY", username: "matt", password: "elixir"},
+     %User{id: 3, name: "Osama AAAA", username: "osama", password: "elixir"},
+     %User{id: 4, name: "Eugene BBBB", username: "eugene", password: "elixir"}
     ]
   end
 

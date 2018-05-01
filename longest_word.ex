@@ -16,9 +16,10 @@ defmodule LongestWord do
 
   # PRIVATE FUNCTIONS
   defp replace_sentence(words) do
-    words
-    |> Enum.slice(1..-1)
-    |> Enum.join(",")
-    |> String.replace(",", " ")
+    [_ | tail] = words
+
+    tail
+    |> Enum.reduce("", fn(word, acc) -> acc <> " " <> word end)
+    |> String.trim()
   end
 end

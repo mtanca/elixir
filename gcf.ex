@@ -30,5 +30,4 @@ defmodule GreatestCommonFactor do
   defp mod(x,y) when x > 0, do: rem(x, y)
 
   defp mod(x,y) when x < 0, do: rem(x, y) + y
-
 end
